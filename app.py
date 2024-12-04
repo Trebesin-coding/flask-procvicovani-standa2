@@ -4,27 +4,13 @@ app = Flask(__name__)
 
 
 @app.route("/")
+def index():
+    return render_template("index.html")
 
-
-
-# name = request.args.get("name") 
-# input_class = request.args.get("class")
-# message = request.args.get("message")
-
-#     return redirect(url_for("result", name=name, form_class=input_class, message=message))
-    
-
-
-# name = request.form.get("name")
-# input_class = request.form.get("class")
-# message = request.form.get("message")
-
-#     return redirect(url_for("result", name=name, form_class=input_class, message=message))
-    
-
-
-
-
+@app.route("/form")
+def form():
+    py_var = request.args.get("name")
+    return render_template("form.html",  jinja_var = py_var)
 
 if __name__ == "__main__":
-    app.run(debug=True) #spouštění flaskové aplikace
+    app.run(debug=True)
